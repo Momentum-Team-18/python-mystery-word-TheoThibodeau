@@ -1,35 +1,40 @@
 import random
 
 def play_game(filename):
-    # write code here
+    print("What's the word??")
+
     with open(filename) as file:
         word_list = file.read().split()
-        # how do i knwo it is selecting the test-word file?
-        # test-word(random_selection)
-        # close file?
-        #
-    # GUESSING CODE
+
     random_word = random.choice(word_list)
     print(random_word)
     display = ''
-    for word in random_word:
+    # num_letters = len(random_word)
+    for letter in random_word:
         display += ' _'
     print(display)
-       
+
+    # user_guesses = ''
+    # print(user_guesses)
+
     guesses = 3
     while guesses > 0:
+        wrong_guesses = 0
+        display += letter
         letter = input("guess a letter: ")
-        if letter in random_word:
-            print('correct')
-        else:
+        for word in random_word:
+            if letter in random_word:
+                print(f"correct: {letter}")
+                break
+            else:
+                wrong_guesses += 1
+                break
+    
+        if letter not in random_word:
             guesses -= 1
-            print('nope')
-            
-    print("game over")
-
-
-
-
+            print("Nope! You have " + str(guesses) + " guesses left.")
+        if guesses == 0:
+            print(f"The secret word is: {random_word}")
 
 if __name__ == "__main__":
-    play_game("test-word.txt")
+    play_game("words.txt")
