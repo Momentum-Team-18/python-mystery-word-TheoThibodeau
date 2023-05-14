@@ -18,11 +18,12 @@ def play_game(filename):
             else:
                 hard_mode.append(word)
         # write a loop that iterates the words and organizes them based on length
+        # and puts the randomly chosen word into its specific list
         
         easy_word = random.choice(easy_mode)
         normal_word = random.choice(normal_mode)
         hard_word = random.choice(hard_mode)
-        # assign difficulty to chose word
+        # defines variables that contain lists with different levels of difficulty
         choose_level = str(input("Choose level of difficulty (Easy, Normal, or Hard): "))
         
         if choose_level == "Easy":
@@ -31,10 +32,7 @@ def play_game(filename):
             random_word = normal_word
         if choose_level == "Hard":
             random_word = hard_word
-        # define different levels of difficulty
-    
-    # random_word = random.choice(word_list)
-    # print(random_word)
+        # assign difficulty level to corresponding mode
     
     display = []
     num_letters = len(random_word)
